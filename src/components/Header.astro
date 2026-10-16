@@ -1,6 +1,7 @@
 ---
-// Zaglavlje: naziv ordinacije, meni, dugme za jezik i dugme za poziv.
+// Zaglavlje: naziv ordinacije, meni, zastave za izbor jezika i dugme za poziv.
 // Na telefonu se meni sklapa iza dugmeta "Meni".
+import Flag from './Flag.astro';
 import { clinic, routes, t, url, type Lang, type PageKey } from '../i18n';
 
 interface Props {
@@ -10,7 +11,8 @@ interface Props {
 
 const { lang, page } = Astro.props;
 const text = t[lang];
-const otherLang: Lang = lang === 'sr' ? 'en' : 'sr';
+const languages: Lang[] = ['sr', 'en'];
+const langNames: Record<Lang, string> = { sr: 'Srpski', en: 'English' };
 const pages = Object.keys(routes) as PageKey[];
 ---
 
@@ -36,9 +38,23 @@ const pages = Object.keys(routes) as PageKey[];
         }
       </ul>
       <div class="nav__actions">
-        <a class="lang-switch" href={url(page, otherLang)} hreflang={otherLang} lang={otherLang}>
-          {text.switchLang}
-        </a>
+        <div class="langs" role="group" aria-label={text.langLabel}>
+          {
+            languages.map((l) =>
+              l === lang ? (
+                <span class="lang lang--current" title={langNames[l]} aria-current="true">
+                  <Flag code={l} />
+                  <span class="sr-only">{langNames[l]}</span>
+                </span>
+              ) : (
+                <a class="lang" href={url(page, l)} hreflang={l} lang={l} title={langNames[l]}>
+                  <Flag code={l} />
+                  <span class="sr-only">{langNames[l]}</span>
+                </a>
+              ),
+            )
+          }
+        </div>
         <a class="btn btn--primary" href={clinic.phoneHref}>{text.call}</a>
       </div>
     </nav>
@@ -127,13 +143,27 @@ const pages = Object.keys(routes) as PageKey[];
     align-items: center;
     gap: 1rem;
   }
-  .lang-switch {
-    color: var(--ink-soft);
-    font-size: 0.9rem;
-    text-decoration: none;
+  .langs {
+    display: flex;
+    gap: 0.35rem;
   }
-  .lang-switch:hover {
-    color: var(--primary);
+  .lang {
+    padding: 4px;
+    border-radius: 6px;
+    border: 1.5px solid transparent;
+    line-height: 0;
+  }
+  a.lang {
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  a.lang:hover,
+  a.lang:focus-visible {
+    opacity: 1;
+    border-color: var(--line);
+  }
+  .lang--current {
+    border-color: var(--accent);
   }
 
   @media (max-width: 1100px) {

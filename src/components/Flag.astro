@@ -1,0 +1,47 @@
+---
+// Male zastave za izbor jezika, nacrtane kao slika (Windows ne prikazuje zastave-emodžije).
+// Srbija: narodna zastava (crveno-plavo-belo, bez grba). Engleski: zastava Velike Britanije.
+import type { Lang } from '../i18n';
+
+interface Props {
+  code: Lang;
+}
+
+const { code } = Astro.props;
+---
+
+{
+  code === 'sr' ? (
+    <svg class="flag" viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="3" height="2" fill="#fff" />
+      <rect width="3" height="1.3333" fill="#0c4076" />
+      <rect width="3" height="0.6667" fill="#c6363c" />
+    </svg>
+  ) : (
+    <svg class="flag" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <clipPath id="uk-frame">
+        <path d="M0,0 v30 h60 v-30 z" />
+      </clipPath>
+      <clipPath id="uk-diag">
+        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+      </clipPath>
+      <g clip-path="url(#uk-frame)">
+        <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+        <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-diag)" stroke="#c8102e" stroke-width="4" />
+        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+        <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6" />
+      </g>
+    </svg>
+  )
+}
+
+<style>
+  .flag {
+    display: block;
+    width: 28px;
+    height: 19px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgb(22 50 79 / 0.15);
+  }
+</style>

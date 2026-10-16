@@ -143,7 +143,7 @@ const reviews = c.reviews.items.slice(0, 3);
       {
         reviews.map((r) => (
           <figure>
-            <blockquote>„{r.text}“</blockquote>
+            <blockquote>{t[lang].quote[0]}{r.text}{t[lang].quote[1]}</blockquote>
             <figcaption>
               <strong>{r.name}</strong> · {r.service}
             </figcaption>

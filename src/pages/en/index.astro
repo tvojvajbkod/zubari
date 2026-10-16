@@ -1,5 +1,6 @@
 ---
-import Placeholder from '../../components/Placeholder.astro';
+import Home from '../../views/Home.astro';
+import { content } from '../../content';
 ---
 
-<Placeholder lang="en" page="home" />
+<Home lang="en" c={content.en} />

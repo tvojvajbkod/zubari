@@ -3,7 +3,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import CallBand from '../components/CallBand.astro';
-import { type Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
 import type { Content } from '../content';
 
 interface Props {
@@ -25,7 +25,7 @@ const r = c.reviews;
       r.items.map((item) => (
         <figure>
           <p class="stars" aria-label="5/5">★★★★★</p>
-          <blockquote>„{item.text}“</blockquote>
+          <blockquote>{t[lang].quote[0]}{item.text}{t[lang].quote[1]}</blockquote>
           <figcaption>
             <strong>{item.name}</strong> · {item.service}
           </figcaption>

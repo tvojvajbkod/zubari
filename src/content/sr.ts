@@ -217,9 +217,9 @@ export const sr = {
     intro: 'Najlepša preporuka je kada pacijent dovede porodicu. Evo šta neki od njih kažu.',
     disclaimer: 'Ovo je primer sajta – utisci su izmišljeni.',
     items: [
-      { name: 'Milica R.', service: 'Fasete', text: 'Godinama sam se smejala zatvorenih usta. Dr Jelena mi je pre izrade pokazala kako će osmeh izgledati, i izgleda baš tako – prirodno, ne kao „holivudski“.' },
+      { name: 'Milica R.', service: 'Fasete', text: 'Godinama sam se smejala zatvorenih usta. Dr Jelena mi je pre izrade pokazala kako će osmeh izgledati, i izgleda baš tako – prirodno, ne kao ‚holivudski‘.' },
       { name: 'Nenad K.', service: 'Implant', text: 'Najviše sam se plašio ugradnje implanta, a ceo zahvat je trajao manje od sat vremena i ništa nije bolelo. Cena je bila tačno ona koju su mi rekli na prvom pregledu.' },
-      { name: 'Jovana M.', service: 'Dečja stomatologija', text: 'Moj sin (6) sada sam pita kada idemo kod „doktorke sa nalepnicama“. To dovoljno govori.' },
+      { name: 'Jovana M.', service: 'Dečja stomatologija', text: 'Moj sin (6) sada sam pita kada idemo kod ‚doktorke sa nalepnicama‘. To dovoljno govori.' },
       { name: 'Dragan P.', service: 'Proteza na implantima', text: 'Posle dvadeset godina sa pokretnom protezom ponovo mogu da jedem jabuku. Hvala celom timu na strpljenju.' },
       { name: 'Ivana S.', service: 'Beljenje', text: 'Brzo, bez osetljivosti posle, a zubi su svetliji nego što sam očekivala. Osoblje je izuzetno ljubazno.' },
       { name: 'Stefan L.', service: 'Lečenje kanala', text: 'Došao sam sa jakim bolom bez zakazanog termina i primili su me isti dan. Zub je spašen, a ja sam dobio novog stalnog zubara.' },

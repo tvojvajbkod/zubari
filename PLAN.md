@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 4, 16.10.2026), koraci 1–5 završeni; urađeni i „Pre i posle“ i chatbot na srpskom (korak 7 urađen pre koraka 6, da bi se prevelo sve odjednom); sledi korak 6 (engleski)
+Status: **odobren** (verzija 5, 16.10.2026), koraci 1–7 završeni (sajt i chatbot na srpskom i engleskom); sledi korak 8 (provera i Google pretraga)
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio
@@ -43,7 +43,7 @@ Tačne nijanse su odobrene u koraku 3.
   - **ništa ne izmišlja**: ako ne zna odgovor, kaže to i nudi poziv
   - **ne daje medicinske savete**: na pitanja o bolu, otoku, lekovima i slično odgovara da to procenjuje stomatolog i nudi poziv (za hitne slučajeve van radnog vremena upućuje na 194)
   - radi bez veštačke inteligencije, besplatno i bez servera
-- Dugme za promenu jezika SR/EN
+- Izbor jezika: **zastave Srbije i Velike Britanije** u meniju (dopuna u verziji 5, umesto natpisa „English / Srpski“); izabrani jezik je uokviren
 
 ## Alati i zašto
 - **Astro**: pravi brze i jednostavne sajtove, podržava više jezika i radi na besplatnom GitHub hostingu
