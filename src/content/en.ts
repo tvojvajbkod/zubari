@@ -310,8 +310,16 @@ export const en: Content = {
       {
         id: 'adresa',
         label: 'Where are you?',
-        keywords: ['address', 'where', 'locat', 'street', 'map', 'directions', 'parking', 'park$', 'garage', 'transport', 'get there'],
+        keywords: ['address', 'where', 'locat', 'street', 'map', 'parking', 'park$', 'garage'],
         answer: 'We are at 100 Knez Mihailova Street in Belgrade, in the pedestrian zone, a five-minute walk from Republic Square. The nearest public garage is “Obilićev venac”.',
+        link: 'contact',
+      },
+      {
+        id: 'prevoz',
+        label: 'How do I get there?',
+        weight: 2,
+        keywords: ['transport', 'get there', 'get to', 'directions', 'bus$', 'buses', 'tram', 'trolley', 'line$', 'lines', 'station', 'airport', 'train'],
+        answer: 'On the Contact page you will find public transport routes from the bus and railway stations, the airport and other parts of the city. Click “Show route” and Google Maps shows which lines are currently running. The last part of the journey is on foot, from Republic Square or Studentski trg.',
         link: 'contact',
       },
       {
@@ -445,5 +453,21 @@ export const en: Content = {
     emailTitle: 'Email',
     emailText: 'For questions that are not urgent.',
     mapTitle: 'Map: Knez Mihailova Street, Belgrade',
+    // Routes open Google Maps with the current timetable; line numbers are intentionally not listed here.
+    transport: {
+      title: 'Getting here by public transport',
+      intro: 'Choose where you are starting from. Google Maps will show which lines are currently running, where to change and how long the journey takes.',
+      note: 'The clinic is in the pedestrian zone, so the last part of the journey is on foot – usually from Republic Square or Studentski trg.',
+      routeLabel: 'Show route',
+      newTab: 'opens in a new window',
+      origins: [
+        { name: 'Belgrade Bus Station', detail: 'New main bus station, Block 42, New Belgrade', from: 'Autobuska stanica Beograd, Blok 42, Novi Beograd', mode: 'transit' },
+        { name: 'Belgrade Centre railway station', detail: 'Main railway station (Prokop)', from: 'Železnička stanica Beograd Centar, Prokop, Beograd', mode: 'transit' },
+        { name: 'Nikola Tesla Airport', detail: 'Surčin', from: 'Aerodrom Nikola Tesla Beograd', mode: 'transit' },
+        { name: 'Slavija', detail: 'Slavija Square', from: 'Slavija, Beograd', mode: 'transit' },
+        { name: 'Ušće', detail: 'Ušće Shopping Centre, New Belgrade', from: 'Tržni centar Ušće, Novi Beograd', mode: 'transit' },
+        { name: 'Kalemegdan', detail: 'Kalemegdan Park – at the end of Knez Mihailova, on foot', from: 'Kalemegdan, Beograd', mode: 'walking' },
+      ],
+    },
   },
 };

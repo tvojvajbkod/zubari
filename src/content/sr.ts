@@ -309,8 +309,16 @@ export const sr = {
       {
         id: 'adresa',
         label: 'Gde se nalazite?',
-        keywords: ['adres', 'gde', 'lokacij', 'nalazi', 'ulic', 'mapa', 'parking', 'garaz', 'parkir', 'prevoz', 'stici'],
+        keywords: ['adres', 'gde', 'lokacij', 'nalazi', 'ulic', 'mapa', 'parking', 'garaz', 'parkir'],
         answer: 'Nalazimo se u Knez Mihailovoj 100 u Beogradu, u pešačkoj zoni, pet minuta hoda od Trga republike. Najbliža javna garaža je „Obilićev venac“.',
+        link: 'contact',
+      },
+      {
+        id: 'prevoz',
+        label: 'Kako da stignem?',
+        weight: 2,
+        keywords: ['prevoz', 'stici', 'stignem', 'autobus', 'tramvaj', 'trolejbus', 'linij', 'stanic', 'aerodrom', 'gsp', 'voz$', 'vozom'],
+        answer: 'Na stranici Kontakt su rute gradskim prevozom od autobuske i železničke stanice, aerodroma i drugih delova grada. Klikom na „Prikaži rutu“ Google mapa pokazuje koje linije trenutno saobraćaju. Poslednji deo puta je peške, od Trga republike ili Studentskog trga.',
         link: 'contact',
       },
       {
@@ -444,5 +452,21 @@ export const sr = {
     emailTitle: 'Email',
     emailText: 'Za pitanja koja nisu hitna.',
     mapTitle: 'Mapa: Knez Mihailova ulica, Beograd',
+    // Rute otvara Google mapa sa trenutnim redom vožnje; brojevi linija se namerno ne pišu ovde.
+    transport: {
+      title: 'Kako stići gradskim prevozom',
+      intro: 'Izaberite odakle krećete. Google mapa će vam pokazati koje linije trenutno saobraćaju, gde treba presesti i koliko traje vožnja.',
+      note: 'Ordinacija je u pešačkoj zoni, pa poslednji deo puta idete peške – najčešće od Trga republike ili Studentskog trga.',
+      routeLabel: 'Prikaži rutu',
+      newTab: 'otvara se u novom prozoru',
+      origins: [
+        { name: 'Autobuska stanica Beograd', detail: 'Nova glavna autobuska stanica, Blok 42, Novi Beograd', from: 'Autobuska stanica Beograd, Blok 42, Novi Beograd', mode: 'transit' },
+        { name: 'Železnička stanica Beograd Centar', detail: 'Glavna železnička stanica (Prokop)', from: 'Železnička stanica Beograd Centar, Prokop, Beograd', mode: 'transit' },
+        { name: 'Aerodrom Nikola Tesla', detail: 'Surčin', from: 'Aerodrom Nikola Tesla Beograd', mode: 'transit' },
+        { name: 'Slavija', detail: 'Trg Slavija', from: 'Slavija, Beograd', mode: 'transit' },
+        { name: 'Ušće', detail: 'Tržni centar Ušće, Novi Beograd', from: 'Tržni centar Ušće, Novi Beograd', mode: 'transit' },
+        { name: 'Kalemegdan', detail: 'Kalemegdanski park – na kraju Knez Mihailove, peške', from: 'Kalemegdan, Beograd', mode: 'walking' },
+      ],
+    },
   },
 };

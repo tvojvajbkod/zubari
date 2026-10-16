@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 6, 16.10.2026), koraci 1–8 završeni; urađena SEO osnova
+Status: **odobren** (verzija 7, 16.10.2026), koraci 1–8 završeni, uz dopunu „Kako stići gradskim prevozom“
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio
@@ -34,6 +34,7 @@ Tačne nijanse su odobrene u koraku 3.
 5. **Utisci pacijenata**: izmišljeni utisci (jasno označeni kao primer)
 6. **Česta pitanja**: uključuje i mitove i činjenice
 7. **Kontakt**: adresa, mapa, telefon i radno vreme
+   - *Dopuna (verzija 7):* sekcija **„Kako stići gradskim prevozom“**: autobuska stanica (Blok 42), železnička stanica Beograd Centar (Prokop), aerodrom i bitnije lokacije u gradu, svaka sa dugmetom „Prikaži rutu“ koje otvara Google mapu sa trenutnim linijama. Brojevi linija se namerno ne pišu na sajtu, jer se trase često menjaju.
 
 **Dopuna (verzija 4):** na Početnoj je i sekcija **„Pre i posle“**, sa klizačem kao na uzoru. Ordinacija je izmišljena, pa su to ilustracije: fotografije „pre“ su digitalno obrađene i to piše ispod sekcije. Za pravu ordinaciju bi se zamenile pravim fotografijama pacijenata (uz njihovu saglasnost).
 

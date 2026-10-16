@@ -13,7 +13,11 @@ interface Props {
 const { lang, c } = Astro.props;
 const k = c.contact;
 const text = t[lang];
-const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent('Knez Mihailova, Beograd')}&z=16&output=embed&hl=${lang === 'sr' ? 'sr-Latn' : 'en'}`;
+const destination = 'Knez Mihailova, Beograd';
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(destination)}&z=16&output=embed&hl=${lang === 'sr' ? 'sr-Latn' : 'en'}`;
+// Link za rutu na Google mapi (zvanični format "Maps URLs"): uvek prikazuje trenutne linije.
+const routeUrl = (from: string, mode: string) =>
+  `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(from)}&destination=${encodeURIComponent(destination)}&travelmode=${mode}`;
 ---
 
 <Layout lang={lang} page="contact" title={k.seoTitle} description={k.description}>
@@ -48,6 +52,27 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent('Knez Mihailo
 
     <iframe class="map" src={mapSrc} title={k.mapTitle} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
+
+  <section class="container transport">
+    <h2 class="transport__title">{k.transport.title}</h2>
+    <p class="transport__intro">{k.transport.intro}</p>
+    <ul class="routes">
+      {
+        k.transport.origins.map((o) => (
+          <li>
+            <div>
+              <h3>{o.name}</h3>
+              <p>{o.detail}</p>
+            </div>
+            <a class="route-link" href={routeUrl(o.from, o.mode)} target="_blank" rel="noopener">
+              {k.transport.routeLabel} →<span class="sr-only"> ({k.transport.newTab})</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="transport__note">{k.transport.note}</p>
+  </section>
 </Layout>
 
 <style>
@@ -105,8 +130,74 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent('Knez Mihailo
     border: 0;
     border-radius: calc(var(--radius) * 1.5);
   }
+  .transport {
+    padding-top: clamp(3rem, 6vw, 4.5rem);
+  }
+  .transport__title {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--ink);
+  }
+  .transport__intro {
+    max-width: 44rem;
+    margin: 0 0 2rem;
+    color: var(--ink-soft);
+  }
+  .routes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .routes li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .routes h3 {
+    margin: 0 0 0.15rem;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .routes p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  .route-link {
+    flex: none;
+    padding: 0.45rem 1rem;
+    border: 1.5px solid var(--primary);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .route-link:hover {
+    background: var(--accent-soft);
+  }
+  .transport__note {
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-soft);
+    color: var(--ink-soft);
+  }
   @media (max-width: 850px) {
-    .contact {
+    .contact,
+    .routes {
       grid-template-columns: 1fr;
     }
   }
