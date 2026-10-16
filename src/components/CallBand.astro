@@ -1,0 +1,56 @@
+---
+// Traka sa pozivom na zakazivanje, na dnu većine stranica.
+import { clinic, t, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  text: string;
+}
+
+const { lang, title, text } = Astro.props;
+---
+
+<section class="container">
+  <div class="band">
+    <div>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <a class="btn btn--light" href={clinic.phoneHref}>
+      {t[lang].call}: {clinic.phone}
+    </a>
+  </div>
+</section>
+
+<style>
+  .band {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem 3rem;
+    margin-top: 5rem;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border-radius: var(--radius);
+    background: linear-gradient(120deg, var(--primary), var(--primary-deep));
+    color: #fff;
+  }
+  .band h2 {
+    margin: 0 0 0.5rem;
+    color: #fff;
+  }
+  .band p {
+    margin: 0;
+    color: rgb(255 255 255 / 0.85);
+    max-width: 38rem;
+  }
+  .btn--light {
+    background: #fff;
+    color: var(--primary-deep);
+    white-space: normal;
+  }
+  .btn--light:hover {
+    background: var(--accent-soft);
+  }
+</style>

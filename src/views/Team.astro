@@ -1,0 +1,101 @@
+---
+// Stranica Naš tim.
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CallBand from '../components/CallBand.astro';
+import { type Lang } from '../i18n';
+import { photos } from '../photos';
+import type { Content } from '../content';
+
+interface Props {
+  lang: Lang;
+  c: Content;
+}
+
+const { lang, c } = Astro.props;
+const tm = c.team;
+---
+
+<Layout lang={lang} page="team" title={tm.title} description={tm.description}>
+  <PageIntro eyebrow={tm.eyebrow} title={tm.title} intro={tm.intro} />
+
+  <div class="container team">
+    {
+      tm.members.map((m) => (
+        <article>
+          <Image src={photos[m.photo]} alt={m.name} widths={[400, 700]} sizes="(max-width: 800px) 100vw, 33vw" />
+          <h2>{m.name}</h2>
+          <p class="role">{m.role}</p>
+          <p>{m.bio}</p>
+          <p class="focus-label">{tm.focusLabel}</p>
+          <ul>
+            {m.focus.map((f) => <li>{f}</li>)}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+
+  <CallBand lang={lang} title={c.home.callout.title} text={c.home.callout.text} />
+</Layout>
+
+<style>
+  .team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2rem;
+    padding-top: 1rem;
+  }
+  .team img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: calc(var(--radius) * 1.5);
+  }
+  h2 {
+    margin: 1.25rem 0 0.25rem;
+    font-size: 1.8rem;
+  }
+  .role {
+    margin: 0 0 1rem;
+    color: var(--accent-ink);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  article p {
+    color: var(--ink-soft);
+  }
+  .focus-label {
+    margin: 1.25rem 0 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 900px) {
+    .team {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .team {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

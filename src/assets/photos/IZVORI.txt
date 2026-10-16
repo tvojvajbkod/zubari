@@ -1,0 +1,18 @@
+Fotografije: Pexels (besplatna licenca, https://www.pexels.com/license/)
+hero.jpg  https://www.pexels.com/photo/6627574/
+ordinacija-1.jpg  https://www.pexels.com/photo/5355858/
+ordinacija-2.jpg  https://www.pexels.com/photo/6809639/
+ordinacija-3.jpg  https://www.pexels.com/photo/6812453/
+ordinacija-4.jpg  https://www.pexels.com/photo/305568/
+dr-jelena.jpg  https://www.pexels.com/photo/12917343/
+dr-marko.jpg  https://www.pexels.com/photo/6812449/
+dr-ana.jpg  https://www.pexels.com/photo/7904470/
+usluga-popravke.jpg  https://www.pexels.com/photo/6627537/
+usluga-beljenje.jpg  https://www.pexels.com/photo/6627570/
+usluga-fasete.jpg  https://www.pexels.com/photo/5355891/
+usluga-implanti.jpg  https://www.pexels.com/photo/6502305/
+usluga-proteze.jpg  https://www.pexels.com/photo/7788493/
+usluga-deca.jpg  https://www.pexels.com/photo/8260441/
+usluga-preventiva.jpg  https://www.pexels.com/photo/6627320/
+konsultacija.jpg  https://www.pexels.com/photo/12746003/
+pacijent-1.jpg  https://www.pexels.com/photo/3845549/

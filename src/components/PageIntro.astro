@@ -1,0 +1,35 @@
+---
+// Naslov na vrhu unutrašnjih stranica.
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+}
+
+const { eyebrow, title, intro } = Astro.props;
+---
+
+<section class="intro">
+  <div class="container">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="lead">{intro}</p>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .intro {
+    padding-block: clamp(3rem, 7vw, 5rem) clamp(2rem, 4vw, 3rem);
+    background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+  }
+  h1 {
+    margin: 0.25rem 0 1rem;
+  }
+  .lead {
+    max-width: 44rem;
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+</style>

@@ -14,7 +14,7 @@
   --gold: #b8955a; /* zlatna, samo u sitnim detaljima */
   --gold-light: #e2c99a;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --radius: 14px;
 }
@@ -62,6 +62,7 @@ a {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -88,6 +89,45 @@ img {
 
 .btn--primary:hover {
   background: var(--primary-deep);
+}
+
+.btn--ghost {
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn--ghost:hover {
+  background: var(--accent-soft);
+}
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+
+.section h2 {
+  margin: 0.25rem 0 0;
+}
+
+.soft {
+  background: var(--bg-soft);
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.link-arrow {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-arrow:hover {
+  text-decoration: underline;
 }
 
 .eyebrow {

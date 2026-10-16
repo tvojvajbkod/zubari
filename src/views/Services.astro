@@ -1,0 +1,116 @@
+---
+// Stranica Usluge: svaka usluga u svom redu, slika i tekst naizmenično levo-desno.
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CallBand from '../components/CallBand.astro';
+import { url, type Lang } from '../i18n';
+import { photos } from '../photos';
+import type { Content } from '../content';
+
+interface Props {
+  lang: Lang;
+  c: Content;
+}
+
+const { lang, c } = Astro.props;
+const s = c.services;
+---
+
+<Layout lang={lang} page="services" title={s.title} description={s.description}>
+  <PageIntro eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+    <nav class="jump">
+      {s.items.map((item) => <a href={`#${item.id}`}>{item.name}</a>)}
+    </nav>
+  </PageIntro>
+
+  <div class="container">
+    {
+      s.items.map((item) => (
+        <section class="service" id={item.id}>
+          <Image src={photos[item.photo]} alt="" widths={[500, 800]} sizes="(max-width: 800px) 100vw, 45vw" />
+          <div>
+            <h2>{item.name}</h2>
+            <p>{item.text}</p>
+            <ul>
+              {item.includes.map((x) => <li>{x}</li>)}
+            </ul>
+            <a class="link-arrow" href={url('prices', lang)}>{s.pricesLink} →</a>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <CallBand lang={lang} title={c.home.callout.title} text={c.home.callout.text} />
+</Layout>
+
+<style>
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  .jump a {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .jump a:hover {
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+  .service {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 5rem;
+  }
+  .service:nth-child(even) img {
+    order: 2;
+  }
+  .service img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: calc(var(--radius) * 1.5);
+  }
+  .service h2 {
+    margin: 0 0 0.75rem;
+  }
+  .service p {
+    color: var(--ink-soft);
+  }
+  .service ul {
+    margin: 1.25rem 0 1.5rem;
+    padding: 0;
+    list-style: none;
+  }
+  .service li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.75rem;
+  }
+  .service li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-ink);
+    font-weight: 700;
+  }
+  @media (max-width: 800px) {
+    .service {
+      grid-template-columns: 1fr;
+    }
+    .service:nth-child(even) img {
+      order: 0;
+    }
+  }
+</style>

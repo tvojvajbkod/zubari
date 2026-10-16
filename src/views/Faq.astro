@@ -1,0 +1,144 @@
+---
+// Stranica Česta pitanja: mitovi i činjenice, pa pitanja koja se otvaraju klikom.
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CallBand from '../components/CallBand.astro';
+import { type Lang } from '../i18n';
+import type { Content } from '../content';
+
+interface Props {
+  lang: Lang;
+  c: Content;
+}
+
+const { lang, c } = Astro.props;
+const f = c.faq;
+---
+
+<Layout lang={lang} page="faq" title={f.title} description={f.description}>
+  <PageIntro eyebrow={f.eyebrow} title={f.title} intro={f.intro} />
+
+  <section class="container block">
+    <h2>{f.mythsTitle}</h2>
+    <ul class="myths">
+      {
+        f.myths.map((m) => (
+          <li>
+            <p class="myth">
+              <span class="tag tag--myth">✕ {f.mythLabel}</span>
+              {m.myth}
+            </p>
+            <p class="fact">
+              <span class="tag tag--fact">✓ {f.factLabel}</span>
+              {m.fact}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="container block">
+    <h2>{f.questionsTitle}</h2>
+    <div class="qa">
+      {
+        f.questions.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <CallBand lang={lang} title={c.home.callout.title} text={c.home.callout.text} />
+</Layout>
+
+<style>
+  .block {
+    padding-top: 2rem;
+  }
+  .block h2 {
+    margin: 0 0 1.5rem;
+  }
+  .block + .block {
+    padding-top: 4rem;
+  }
+  .myths {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .myths li {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 1rem 3rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .myths p {
+    margin: 0;
+  }
+  .myth {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    text-decoration-color: rgb(74 99 120 / 0.4);
+  }
+  .tag {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .tag--myth {
+    color: #a24b4b;
+  }
+  .tag--fact {
+    color: var(--accent-ink);
+  }
+  .qa {
+    border-top: 1px solid var(--line);
+  }
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+  summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.25rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    color: var(--primary);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  details[open] summary::after {
+    content: '–';
+  }
+  summary:hover {
+    color: var(--primary);
+  }
+  details p {
+    margin: 0 0 1.5rem;
+    max-width: 48rem;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 700px) {
+    .myths li {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

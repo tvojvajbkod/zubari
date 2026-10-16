@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 3, 16.10.2026), koraci 1–3 završeni (izgled odobren), u toku je korak 4
+Status: **odobren** (verzija 3, 16.10.2026), koraci 1–5 završeni (srpska verzija gotova), sledi korak 6 (engleski)
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio
@@ -19,7 +19,12 @@ Umesto crne podloge sa uzora: **bela podloga + boje koje ljudi povezuju sa zdrav
 - **Plava**: poverenje, smirenost, stručnost (smanjuje strah od zubara)
 - **Tirkizna / mint**: svežina, zdravlje (kao osećaj posle pranja zuba)
 - **Topla zlatna, samo u sitnim detaljima**: veza sa nazivom „Aurum“ i utisak kvaliteta
-Tačne nijanse se biraju i odobravaju u koraku 3.
+Tačne nijanse su odobrene u koraku 3.
+
+## Slova
+- Naslovi: **Playfair Display** (elegantan, sa „serifima“)
+- Tekst: **Inter** (jednostavan i čitak)
+- *Odstupanje od koraka 3:* prvobitni font (Cormorant) je loše prikazivao š, ž i č, pa je zamenjen
 
 ## Stranice (svaka na srpskom i na engleskom)
 1. **Početna**: velika fotografija, kratka poruka, dugme „Pozovite nas“, izdvojene usluge i nekoliko utisaka pacijenata
@@ -37,7 +42,8 @@ Tačne nijanse se biraju i odobravaju u koraku 3.
 ## Alati i zašto
 - **Astro**: pravi brze i jednostavne sajtove, podržava više jezika i radi na besplatnom GitHub hostingu
 - **GitHub Pages**: besplatno postavljanje sajta
-- **Unsplash i Pexels**: besplatne fotografije koje se mogu legalno koristiti
+- **Pexels**: besplatne fotografije koje se mogu legalno koristiti (spisak izvora u src/assets/photos/IZVORI.txt)
+  - *Odstupanje:* Unsplash blokira automatsko preuzimanje, pa su sve fotografije sa Pexels-a
 - **Google mapa**: na stranici Kontakt
 - (Uklonjeno iz verzije 1: Formspree formular, jer se termini zakazuju telefonom)
 

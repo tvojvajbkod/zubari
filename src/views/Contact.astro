@@ -1,0 +1,113 @@
+---
+// Stranica Kontakt: telefon (glavni način zakazivanja), adresa, radno vreme i mapa.
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { clinic, t, type Lang } from '../i18n';
+import type { Content } from '../content';
+
+interface Props {
+  lang: Lang;
+  c: Content;
+}
+
+const { lang, c } = Astro.props;
+const k = c.contact;
+const text = t[lang];
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent('Knez Mihailova, Beograd')}&z=16&output=embed&hl=${lang === 'sr' ? 'sr-Latn' : 'en'}`;
+---
+
+<Layout lang={lang} page="contact" title={k.title} description={k.description}>
+  <PageIntro eyebrow={k.eyebrow} title={k.title} intro={k.intro} />
+
+  <div class="container contact">
+    <div class="details">
+      <section class="call">
+        <h2>{k.callTitle}</h2>
+        <a class="phone" href={clinic.phoneHref}>{clinic.phone}</a>
+        <p>{k.callText}</p>
+        <a class="btn btn--primary" href={clinic.phoneHref}>{text.call}</a>
+      </section>
+
+      <section>
+        <h2>{k.addressTitle}</h2>
+        <p>{clinic.address[lang]}</p>
+        <p class="muted">{k.directions}</p>
+      </section>
+
+      <section>
+        <h2>{text.hoursTitle}</h2>
+        {text.hours.map((line) => <p>{line}</p>)}
+      </section>
+
+      <section>
+        <h2>{k.emailTitle}</h2>
+        <p><a href={`mailto:${clinic.email}`}>{clinic.email}</a></p>
+        <p class="muted">{k.emailText}</p>
+      </section>
+    </div>
+
+    <iframe class="map" src={mapSrc} title={k.mapTitle} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</Layout>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    padding-top: 1rem;
+  }
+  .details section {
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .details section:last-child {
+    border-bottom: 0;
+  }
+  h2 {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
+  .details p {
+    margin: 0 0 0.25rem;
+  }
+  .muted {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .call {
+    padding: 1.75rem !important;
+    border: 0 !important;
+    border-radius: var(--radius);
+    background: var(--bg-soft);
+  }
+  .phone {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .call .btn {
+    margin-top: 1rem;
+  }
+  .map {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    border: 0;
+    border-radius: calc(var(--radius) * 1.5);
+  }
+  @media (max-width: 850px) {
+    .contact {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

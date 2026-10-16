@@ -1,0 +1,100 @@
+---
+// Stranica Cenovnik.
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import CallBand from '../components/CallBand.astro';
+import { type Lang } from '../i18n';
+import { formatPrice, type Content } from '../content';
+
+interface Props {
+  lang: Lang;
+  c: Content;
+}
+
+const { lang, c } = Astro.props;
+const p = c.prices;
+---
+
+<Layout lang={lang} page="prices" title={p.title} description={p.description}>
+  <PageIntro eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
+
+  <div class="container prices">
+    {
+      p.groups.map((g) => (
+        <section>
+          <h2>{g.name}</h2>
+          <ul>
+            {g.items.map((item) => (
+              <li>
+                <span class="name">{item.name}</span>
+                <span class="dots" aria-hidden="true" />
+                <span class="price">
+                  {'from' in item && item.from && <small>{p.from} </small>}
+                  {formatPrice(item.price, lang)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+  <div class="container">
+    <p class="note">{p.note}</p>
+  </div>
+
+  <CallBand lang={lang} title={c.home.callout.title} text={c.home.callout.text} />
+</Layout>
+
+<style>
+  .prices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 4rem;
+    padding-top: 1rem;
+  }
+  h2 {
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1.5px solid var(--gold);
+    font-size: 1.7rem;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-block: 0.65rem;
+  }
+  .dots {
+    flex: 1;
+    min-width: 1rem;
+    border-bottom: 1px dotted var(--ink-soft);
+    opacity: 0.5;
+  }
+  .price {
+    font-weight: 600;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+  .price small {
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+  .note {
+    margin-top: 3rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-soft);
+    color: var(--ink-soft);
+  }
+  @media (max-width: 800px) {
+    .prices {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
