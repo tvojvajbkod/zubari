@@ -59,6 +59,12 @@ export const sr = {
       title: 'Šta kažu naši pacijenti',
       cta: 'Svi utisci',
     },
+    location: {
+      eyebrow: 'Lokacija',
+      title: 'Kako do nas',
+      text: 'Knez Mihailova 100, u pešačkoj zoni u centru Beograda. Izaberite odakle krećete i Google mapa će vam pokazati linije gradskog prevoza.',
+      cta: 'Adresa, radno vreme i kontakt',
+    },
     callout: {
       title: 'Zakažite pregled jednim pozivom',
       text: 'Javite se radnim danima od 9 do 20h i subotom od 9 do 14h. Dogovorićemo termin koji vam odgovara.',

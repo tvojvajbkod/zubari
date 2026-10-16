@@ -1,0 +1,89 @@
+---
+// Spisak polaznih tačaka sa dugmetom "Prikaži rutu" (Google mapa, gradski prevoz).
+// Koristi se na Početnoj (jedna kolona, pored mape) i na Kontaktu (dve kolone).
+import { routeUrl } from '../location';
+import type { Content } from '../content';
+
+interface Props {
+  transport: Content['contact']['transport'];
+  columns?: 1 | 2;
+}
+
+const { transport, columns = 2 } = Astro.props;
+---
+
+<ul class:list={['routes', { 'routes--two': columns === 2 }]}>
+  {
+    transport.origins.map((o) => (
+      <li>
+        <div>
+          <h3>{o.name}</h3>
+          <p>{o.detail}</p>
+        </div>
+        <a class="route-link" href={routeUrl(o.from, o.mode)} target="_blank" rel="noopener">
+          {transport.routeLabel} →<span class="sr-only"> ({transport.newTab})</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+<p class="routes-note">{transport.note}</p>
+
+<style>
+  .routes {
+    display: grid;
+    column-gap: 3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .routes--two {
+    grid-template-columns: 1fr 1fr;
+  }
+  .routes li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .routes h3 {
+    margin: 0 0 0.15rem;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .routes p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  .route-link {
+    flex: none;
+    padding: 0.45rem 1rem;
+    border: 1.5px solid var(--primary);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .route-link:hover {
+    background: var(--accent-soft);
+  }
+  .routes-note {
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-soft);
+    color: var(--ink-soft);
+  }
+  @media (max-width: 850px) {
+    .routes--two {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

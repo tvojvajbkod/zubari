@@ -35,6 +35,7 @@ Tačne nijanse su odobrene u koraku 3.
 6. **Česta pitanja**: uključuje i mitove i činjenice
 7. **Kontakt**: adresa, mapa, telefon i radno vreme
    - *Dopuna (verzija 7):* sekcija **„Kako stići gradskim prevozom“**: autobuska stanica (Blok 42), železnička stanica Beograd Centar (Prokop), aerodrom i bitnije lokacije u gradu, svaka sa dugmetom „Prikaži rutu“ koje otvara Google mapu sa trenutnim linijama. Brojevi linija se namerno ne pišu na sajtu, jer se trase često menjaju.
+   - *Dopuna:* mapa i rute stoje i na **Početnoj** (sekcija „Kako do nas“, pre plave trake za zakazivanje).
 
 **Dopuna (verzija 4):** na Početnoj je i sekcija **„Pre i posle“**, sa klizačem kao na uzoru. Ordinacija je izmišljena, pa su to ilustracije: fotografije „pre“ su digitalno obrađene i to piše ispod sekcije. Za pravu ordinaciju bi se zamenile pravim fotografijama pacijenata (uz njihovu saglasnost).
 

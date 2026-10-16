@@ -60,6 +60,12 @@ export const en: Content = {
       title: 'What our patients say',
       cta: 'All reviews',
     },
+    location: {
+      eyebrow: 'Location',
+      title: 'How to find us',
+      text: '100 Knez Mihailova Street, in the pedestrian zone in central Belgrade. Choose where you are starting from and Google Maps will show you the public transport lines.',
+      cta: 'Address, opening hours and contact',
+    },
     callout: {
       title: 'Book your visit with one call',
       text: 'Call us Monday to Friday from 9 am to 8 pm and on Saturdays from 9 am to 2 pm. We will find a time that suits you.',
