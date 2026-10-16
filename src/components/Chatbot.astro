@@ -1,0 +1,306 @@
+---
+// Chatbot u donjem desnom uglu. Odgovara samo unapred napisanim tekstovima iz content/*.ts
+// (vidi chatbot-match.ts). Ne šalje ništa na internet i ne pamti razgovor.
+import { clinic, url, type Lang, type PageKey } from '../i18n';
+import type { Content } from '../content';
+
+interface Props {
+  lang: Lang;
+  bot: Content['chatbot'];
+}
+
+const { lang, bot } = Astro.props;
+const links = Object.fromEntries(bot.intents.filter((i) => 'link' in i).map((i) => [i.id, url((i as { link: PageKey }).link, lang)]));
+const data = { ...bot, links };
+---
+
+<div class="chat" data-chat>
+  <button class="chat__toggle" type="button" aria-expanded="false" aria-controls="chat-panel" data-chat-toggle>
+    <span aria-hidden="true">💬</span>
+    <span>{bot.open}</span>
+  </button>
+
+  <section id="chat-panel" class="chat__panel" role="dialog" aria-label={bot.title} hidden>
+    <header class="chat__head">
+      <div>
+        <strong>{bot.title}</strong>
+        <span>{bot.subtitle}</span>
+      </div>
+      <button class="chat__close" type="button" aria-label={bot.close} data-chat-close>✕</button>
+    </header>
+
+    <div class="chat__log" aria-live="polite" data-chat-log></div>
+
+    <div class="chat__topics" data-chat-topics></div>
+
+    <form class="chat__form" data-chat-form>
+      <input type="text" name="q" placeholder={bot.placeholder} aria-label={bot.placeholder} autocomplete="off" maxlength="200" />
+      <button type="submit">{bot.send}</button>
+    </form>
+    <a class="chat__call" href={clinic.phoneHref}>📞 {bot.callButton}: {clinic.phone}</a>
+  </section>
+
+  <script type="application/json" data-chat-data set:html={JSON.stringify(data)} />
+</div>
+
+<script>
+  import { match } from '../chatbot-match';
+
+  type Bot = {
+    greeting: string;
+    fallback: string;
+    topics: string;
+    linkLabel: string;
+    medical: { keywords: string[]; answer: string };
+    quick: string[];
+    intents: { id: string; label: string; keywords: string[]; weight?: number; answer: string }[];
+    links: Record<string, string>;
+  };
+
+  const root = document.querySelector<HTMLElement>('[data-chat]');
+  if (root) {
+    const bot: Bot = JSON.parse(root.querySelector('[data-chat-data]')!.textContent!);
+    const panel = root.querySelector<HTMLElement>('.chat__panel')!;
+    const toggle = root.querySelector<HTMLButtonElement>('[data-chat-toggle]')!;
+    const log = root.querySelector<HTMLElement>('[data-chat-log]')!;
+    const topics = root.querySelector<HTMLElement>('[data-chat-topics]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-chat-form]')!;
+    const input = form.querySelector('input')!;
+    const byId = new Map(bot.intents.map((i) => [i.id, i]));
+
+    // Poruke se dodaju kao običan tekst (textContent), nikad kao HTML.
+    function say(from: 'bot' | 'user', text: string, link?: string) {
+      const msg = document.createElement('div');
+      msg.className = `chat__msg chat__msg--${from}`;
+      msg.textContent = text;
+      if (link) {
+        const a = document.createElement('a');
+        a.href = link;
+        a.textContent = `${bot.linkLabel} →`;
+        msg.append(document.createElement('br'), a);
+      }
+      log.append(msg);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function answer(id: string) {
+      const intent = byId.get(id);
+      if (intent) say('bot', intent.answer, bot.links[id]);
+    }
+
+    function showTopics() {
+      topics.replaceChildren();
+      const label = document.createElement('p');
+      label.textContent = bot.topics;
+      topics.append(label);
+      for (const id of bot.quick) {
+        const intent = byId.get(id);
+        if (!intent) continue;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = intent.label;
+        b.addEventListener('click', () => {
+          say('user', intent.label);
+          answer(id);
+        });
+        topics.append(b);
+      }
+    }
+
+    function setOpen(open: boolean) {
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      root!.classList.toggle('chat--open', open);
+      if (open && !log.childElementCount) {
+        say('bot', bot.greeting);
+        showTopics();
+      }
+      if (open) input.focus();
+      else toggle.focus();
+    }
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    root.querySelector('[data-chat-close]')!.addEventListener('click', () => setOpen(false));
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+      input.value = '';
+      say('user', q);
+      const m = match(q, bot.medical.keywords, bot.intents);
+      if (m.type === 'medical') say('bot', bot.medical.answer);
+      else if (m.type === 'intent') answer(m.id);
+      else say('bot', bot.fallback);
+    });
+  }
+</script>
+
+<style>
+  .chat {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+  .chat__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #fff;
+    font: 600 0.95rem var(--font-body);
+    box-shadow: 0 6px 20px rgb(18 63 99 / 0.3);
+    cursor: pointer;
+  }
+  .chat__toggle:hover {
+    background: var(--primary-deep);
+  }
+  .chat--open .chat__toggle {
+    display: none;
+  }
+  .chat__panel {
+    display: flex;
+    flex-direction: column;
+    width: min(380px, calc(100vw - 32px));
+    height: min(580px, calc(100dvh - 32px));
+    overflow: hidden;
+    border-radius: calc(var(--radius) * 1.25);
+    background: var(--bg);
+    box-shadow: 0 12px 40px rgb(18 63 99 / 0.25);
+  }
+  .chat__panel[hidden] {
+    display: none;
+  }
+  .chat__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.1rem;
+    background: var(--primary-deep);
+    color: #fff;
+  }
+  .chat__head strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+  }
+  .chat__head span {
+    font-size: 0.8rem;
+    color: rgb(255 255 255 / 0.75);
+  }
+  .chat__close {
+    border: 0;
+    background: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .chat__log {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
+    overflow-y: auto;
+    background: var(--bg-soft);
+  }
+  :global(.chat__msg) {
+    max-width: 85%;
+    padding: 0.6rem 0.85rem;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  :global(.chat__msg--bot) {
+    align-self: flex-start;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-bottom-left-radius: 4px;
+  }
+  :global(.chat__msg--user) {
+    align-self: flex-end;
+    background: var(--primary);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  :global(.chat__msg a) {
+    font-weight: 600;
+  }
+  .chat__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .chat__topics :global(p) {
+    width: 100%;
+    margin: 0 0 0.15rem;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
+  .chat__topics :global(button) {
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--accent-ink);
+    font: 0.8rem var(--font-body);
+    cursor: pointer;
+  }
+  .chat__topics :global(button:hover) {
+    background: var(--accent-soft);
+  }
+  .chat__form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .chat__form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font: 0.92rem var(--font-body);
+    color: var(--ink);
+  }
+  .chat__form input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .chat__form button {
+    padding: 0.55rem 1rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #fff;
+    font: 600 0.85rem var(--font-body);
+    cursor: pointer;
+  }
+  .chat__call {
+    display: block;
+    padding: 0.7rem 1rem;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+  }
+  .chat__call:hover {
+    text-decoration: underline;
+  }
+</style>

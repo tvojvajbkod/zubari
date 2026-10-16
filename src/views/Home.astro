@@ -3,6 +3,7 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import CallBand from '../components/CallBand.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 import { clinic, t, url, type Lang } from '../i18n';
 import { photos } from '../photos';
 import type { Content } from '../content';
@@ -93,13 +94,40 @@ const reviews = c.reviews.items.slice(0, 3);
     </div>
   </section>
 
-  <section class="container section about">
+  <section class="container section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">{h.beforeAfter.eyebrow}</p>
+        <h2>{h.beforeAfter.title}</h2>
+        <p class="section-sub">{h.beforeAfter.text}</p>
+      </div>
+    </div>
+    <div class="ba-grid">
+      {
+        h.beforeAfter.cases.map((item) => (
+          <BeforeAfter
+            photo={item.photo}
+            title={item.title}
+            detail={item.detail}
+            before={h.beforeAfter.before}
+            after={h.beforeAfter.after}
+            sliderLabel={h.beforeAfter.sliderLabel}
+          />
+        ))
+      }
+    </div>
+    <p class="ba-note">{h.beforeAfter.disclaimer}</p>
+  </section>
+
+  <section class="section soft">
+    <div class="container about">
     <Image src={photos.konsultacija} alt={h.about.photoAlt} widths={[600, 900]} sizes="(max-width: 900px) 100vw, 50vw" />
     <div>
       <p class="eyebrow">{h.about.eyebrow}</p>
       <h2>{h.about.title}</h2>
       <p>{h.about.text}</p>
       <a class="link-arrow" href={url('team', lang)}>{h.about.cta} →</a>
+    </div>
     </div>
   </section>
 
@@ -292,6 +320,22 @@ const reviews = c.reviews.items.slice(0, 3);
     margin: 1rem 0 1.5rem;
   }
 
+  .section-sub {
+    margin: 0.75rem 0 0;
+    color: var(--ink-soft);
+  }
+  .ba-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.5rem;
+  }
+  .ba-note {
+    margin: 2rem 0 0;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
   .quotes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -327,13 +371,15 @@ const reviews = c.reviews.items.slice(0, 3);
       row-gap: 1.5rem;
     }
     .services,
-    .quotes {
+    .quotes,
+    .ba-grid {
       grid-template-columns: 1fr 1fr;
     }
   }
   @media (max-width: 600px) {
     .services,
-    .quotes {
+    .quotes,
+    .ba-grid {
       grid-template-columns: 1fr;
     }
   }

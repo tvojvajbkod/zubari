@@ -3,7 +3,9 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Chatbot from '../components/Chatbot.astro';
 import { clinic, url, type Lang, type PageKey } from '../i18n';
+import { content } from '../content';
 
 interface Props {
   lang: Lang;
@@ -15,6 +17,8 @@ interface Props {
 const { lang, page, title, description } = Astro.props;
 const fullTitle = page === 'home' ? `${clinic.name} | ${title}` : `${title} | ${clinic.name}`;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+// Engleski tekstovi stižu u koraku 6; do tada chatbot postoji samo na srpskom.
+const bot = lang in content ? content[lang as keyof typeof content].chatbot : null;
 ---
 
 <!doctype html>
@@ -40,5 +44,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <slot />
     </main>
     <Footer lang={lang} />
+    {bot && <Chatbot lang={lang} bot={bot} />}
   </body>
 </html>

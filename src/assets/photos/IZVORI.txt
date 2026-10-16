@@ -16,3 +16,7 @@ usluga-deca.jpg  https://www.pexels.com/photo/8260441/
 usluga-preventiva.jpg  https://www.pexels.com/photo/6627320/
 konsultacija.jpg  https://www.pexels.com/photo/12746003/
 pacijent-1.jpg  https://www.pexels.com/photo/3845549/
+posle-1.jpg / pre-1.jpg  https://www.pexels.com/photo/7298650/
+posle-2.jpg / pre-2.jpg  https://www.pexels.com/photo/28110692/
+posle-3.jpg / pre-3.jpg  https://www.pexels.com/photo/7298633/
+(Fotografije "pre" su digitalno obrađene originalne fotografije – ilustracija za portfolio.)

@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 3, 16.10.2026), koraci 1–5 završeni (srpska verzija gotova), sledi korak 6 (engleski)
+Status: **odobren** (verzija 4, 16.10.2026), koraci 1–5 završeni; urađeni i „Pre i posle“ i chatbot na srpskom (korak 7 urađen pre koraka 6, da bi se prevelo sve odjednom); sledi korak 6 (engleski)
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio
@@ -35,8 +35,14 @@ Tačne nijanse su odobrene u koraku 3.
 6. **Česta pitanja**: uključuje i mitove i činjenice
 7. **Kontakt**: adresa, mapa, telefon i radno vreme
 
+**Dopuna (verzija 4):** na Početnoj je i sekcija **„Pre i posle“**, sa klizačem kao na uzoru. Ordinacija je izmišljena, pa su to ilustracije: fotografije „pre“ su digitalno obrađene i to piše ispod sekcije. Za pravu ordinaciju bi se zamenile pravim fotografijama pacijenata (uz njihovu saglasnost).
+
 ## Dodatno na svakoj stranici
-- **Chatbot**: prozorčić u uglu ekrana. Posetilac bira pitanje (cene, radno vreme, adresa, kako zakazati), a bot odgovara i nudi dugme za poziv.
+- **Chatbot**: prozorčić u uglu ekrana. Posetilac bira pitanje ili ga sam ukuca. Pravila (verzija 4):
+  - odgovara **samo unapred napisanim odgovorima** sa sajta (radno vreme, cene, adresa, zakazivanje, usluge, plaćanje, garancija...)
+  - **ništa ne izmišlja**: ako ne zna odgovor, kaže to i nudi poziv
+  - **ne daje medicinske savete**: na pitanja o bolu, otoku, lekovima i slično odgovara da to procenjuje stomatolog i nudi poziv (za hitne slučajeve van radnog vremena upućuje na 194)
+  - radi bez veštačke inteligencije, besplatno i bez servera
 - Dugme za promenu jezika SR/EN
 
 ## Alati i zašto

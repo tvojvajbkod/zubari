@@ -1,0 +1,140 @@
+---
+// Klizač "pre i posle": fotografija "posle" je ispod, a "pre" preko nje, odsečena do linije.
+// Liniju pomera nevidljivi klizač preko slike, pa radi i mišem, prstom i tastaturom.
+import { Image } from 'astro:assets';
+import { photos } from '../photos';
+
+interface Props {
+  photo: string;
+  title: string;
+  detail: string;
+  before: string;
+  after: string;
+  sliderLabel: string;
+}
+
+const { photo, title, detail, before, after, sliderLabel } = Astro.props;
+---
+
+<figure class="ba">
+  <div class="ba__frame" style="--pos: 50%">
+    <Image src={photos[`posle-${photo}`]} alt={`${after}: ${title}`} widths={[500, 800]} sizes="(max-width: 700px) 100vw, 33vw" />
+    <div class="ba__before">
+      <Image src={photos[`pre-${photo}`]} alt={`${before}: ${title}`} widths={[500, 800]} sizes="(max-width: 700px) 100vw, 33vw" />
+    </div>
+    <span class="ba__tag ba__tag--before" aria-hidden="true">{before}</span>
+    <span class="ba__tag ba__tag--after" aria-hidden="true">{after}</span>
+    <span class="ba__line" aria-hidden="true"><span class="ba__knob">‹ ›</span></span>
+    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label={`${sliderLabel}: ${title}`} />
+  </div>
+  <figcaption>
+    <strong>{title}</strong>
+    <span>{detail}</span>
+  </figcaption>
+</figure>
+
+<script>
+  document.querySelectorAll<HTMLInputElement>('.ba__range').forEach((range) => {
+    const frame = range.parentElement as HTMLElement;
+    range.addEventListener('input', () => frame.style.setProperty('--pos', `${range.value}%`));
+  });
+</script>
+
+<style>
+  .ba {
+    margin: 0;
+  }
+  .ba__frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: calc(var(--radius) * 1.5);
+    aspect-ratio: 4 / 3;
+    user-select: none;
+  }
+  .ba__frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ba__before {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  }
+  .ba__tag {
+    position: absolute;
+    top: 0.75rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.9);
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  .ba__tag--before {
+    left: 0.75rem;
+  }
+  .ba__tag--after {
+    right: 0.75rem;
+    background: var(--primary);
+    color: #fff;
+  }
+  .ba__line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--pos);
+    width: 2px;
+    margin-left: -1px;
+    background: #fff;
+    box-shadow: 0 0 6px rgb(0 0 0 / 0.3);
+    pointer-events: none;
+  }
+  .ba__knob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary);
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.25);
+  }
+  .ba__range {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+  }
+  .ba__frame:has(.ba__range:focus-visible) .ba__knob {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.9rem;
+  }
+  figcaption strong {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  figcaption span {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+</style>
