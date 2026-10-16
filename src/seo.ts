@@ -32,7 +32,6 @@ export function clinicJsonLd(lang: Lang, site: URL | undefined) {
         image: absolute(`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}og-image.jpg`, site),
         telephone: clinic.phone,
         email: clinic.email,
-        inLanguage: lang === 'sr' ? 'sr-Latn' : 'en',
         areaServed: { '@type': 'City', name: lang === 'sr' ? 'Beograd' : 'Belgrade' },
         address: {
           '@type': 'PostalAddress',
