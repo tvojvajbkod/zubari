@@ -1,0 +1,6 @@
+# Robotima je dozvoljeno da čitaju sajt.
+# Dok je sajt TEST, svaka stranica ima oznaku "noindex, nofollow", pa se ne prikazuje u pretrazi.
+User-agent: *
+Allow: /
+
+Sitemap: https://tvojvajbkod.github.io/zubari/sitemap.xml

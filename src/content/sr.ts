@@ -3,9 +3,8 @@
 
 export const sr = {
   home: {
-    title: 'Stomatološka ordinacija u Beogradu',
-    description:
-      'Dental Studio Aurum – moderna stomatološka ordinacija u centru Beograda. Bezbolno lečenje, beljenje, fasete i implanti. Zakažite pregled telefonom.',
+    seoTitle: 'Stomatolog Beograd – Dental Studio Aurum | Lečenje bez bola',
+    description: 'Stomatolog u Beogradu za celu porodicu: pregledi, beljenje, fasete i implanti bez bola, uz cenu unapred. Dental Studio Aurum – zakažite pregled telefonom.',
     hero: {
       eyebrow: 'Stomatološka ordinacija · Beograd',
       title: 'Zdrav osmeh, bez straha i žurbe',
@@ -68,7 +67,8 @@ export const sr = {
 
   services: {
     title: 'Usluge',
-    description: 'Popravke zuba, beljenje, fasete, implanti, proteze i dečja stomatologija u Dental Studiju Aurum u Beogradu.',
+    seoTitle: 'Usluge – stomatolog Beograd | Dental Studio Aurum',
+    description: 'Pregledi, plombe, beljenje, fasete, implanti, proteze i dečja stomatologija u centru Beograda. Plan lečenja i cena unapred. Zakažite pregled telefonom.',
     eyebrow: 'Usluge',
     intro: 'Od redovne kontrole do potpuno novog osmeha. Svaka usluga počinje pregledom i planom sa cenom, kako biste unapred znali šta vas čeka.',
     pricesLink: 'Pogledajte cenovnik',
@@ -76,6 +76,7 @@ export const sr = {
       {
         id: 'preventiva',
         photo: 'usluga-preventiva',
+        photoAlt: 'Stomatolog na modelu vilice pokazuje pacijentu kako se pravilno peru zubi',
         name: 'Pregled i preventiva',
         short: 'Kontrola, čišćenje kamenca i saveti za negu.',
         text: 'Redovan pregled na šest meseci je najjeftiniji način da sačuvate zube. Uklanjamo kamenac, poliramo zube i pokazujemo kako da ih perete da bi ostali zdravi.',
@@ -84,6 +85,7 @@ export const sr = {
       {
         id: 'popravke',
         photo: 'usluga-popravke',
+        photoAlt: 'Stomatolog pregleda zube pacijentkinje u stomatološkoj stolici',
         name: 'Popravke i lečenje zuba',
         short: 'Plombe u boji zuba i lečenje kanala.',
         text: 'Karijes popravljamo belim plombama koje se ne razlikuju od pravog zuba. Kada je zub ozbiljnije oštećen, lečimo kanal i čuvamo zub umesto da ga vadimo.',
@@ -92,6 +94,7 @@ export const sr = {
       {
         id: 'beljenje',
         photo: 'usluga-beljenje',
+        photoAlt: 'Stomatolog upoređuje boju zuba pacijentkinje sa skalom nijansi',
         name: 'Beljenje zuba',
         short: 'Svetliji osmeh za jednu posetu.',
         text: 'Bezbedno beljenje u ordinaciji traje oko sat vremena, a zubi postaju svetliji za nekoliko nijansi. Za postepeno beljenje kod kuće pravimo udlage po meri.',
@@ -100,6 +103,7 @@ export const sr = {
       {
         id: 'fasete',
         photo: 'usluga-fasete',
+        photoAlt: 'Provera boje zuba pomoću skale nijansi pre izrade faseta',
         name: 'Fasete i krunice',
         short: 'Novi osmeh – prirodan, a ne veštački.',
         text: 'Fasete su tanke keramičke ljuspice koje se lepe na prednju stranu zuba. Ispravljaju boju, oblik i male razmake. Pre izrade vidite kako će novi osmeh izgledati.',
@@ -108,6 +112,7 @@ export const sr = {
       {
         id: 'implanti',
         photo: 'usluga-implanti',
+        photoAlt: 'Model vilice sa zubnim implantom',
         name: 'Implanti',
         short: 'Trajna zamena za izgubljen zub.',
         text: 'Implant je mali titanijumski koren na koji se postavlja nova krunica. Izgleda i služi kao pravi zub, a susedne zube ne treba brusiti.',
@@ -116,6 +121,7 @@ export const sr = {
       {
         id: 'proteze',
         photo: 'usluga-proteze',
+        photoAlt: 'Izrada veštačkih zuba za protezu u zubotehničkoj laboratoriji',
         name: 'Proteze',
         short: 'Udobne proteze koje stoje sigurno.',
         text: 'Pravimo pokretne i fiksne proteze, kao i proteze koje se pričvršćuju na implante i ne pomeraju se pri jelu i govoru.',
@@ -124,6 +130,7 @@ export const sr = {
       {
         id: 'deca',
         photo: 'usluga-deca',
+        photoAlt: 'Devojčica na stomatološkom pregledu u ordinaciji',
         name: 'Dečja stomatologija',
         short: 'Prijatna prva iskustva kod zubara.',
         text: 'Deci dajemo vremena da se upoznaju sa ordinacijom. Zalivamo fisure, lečimo mlečne zube i učimo ih kako da peru zube – kroz igru.',
@@ -134,7 +141,8 @@ export const sr = {
 
   team: {
     title: 'Naš tim',
-    description: 'Upoznajte stomatologe Dental Studija Aurum u Beogradu.',
+    seoTitle: 'Naš tim – stomatolozi u Beogradu | Dental Studio Aurum',
+    description: 'Upoznajte stomatologe Dental Studija Aurum u Beogradu: specijaliste estetske stomatologije, oralne hirurgije i dečje stomatologije. Zakažite pregled.',
     eyebrow: 'Naš tim',
     intro: 'Tri stomatologa, svako sa svojom oblašću. Kada vam treba više znanja, radimo zajedno – i dogovaramo se sa vama.',
     members: [
@@ -165,7 +173,8 @@ export const sr = {
 
   prices: {
     title: 'Cenovnik',
-    description: 'Cenovnik stomatoloških usluga Dental Studija Aurum u Beogradu: pregledi, popravke, beljenje, fasete, implanti i proteze.',
+    seoTitle: 'Cenovnik – stomatolog Beograd | Dental Studio Aurum',
+    description: 'Cenovnik stomatoloških usluga u Beogradu: pregled 3.000 din, beljenje, fasete, implanti i proteze. Pisani plan lečenja i plaćanje na rate. Pozovite nas.',
     eyebrow: 'Cenovnik',
     intro: 'Cene su okvirne. Tačnu cenu dobijate posle pregleda, u pisanom planu lečenja – i ona se ne menja tokom lečenja.',
     note: 'Cene su u dinarima i uključuju PDV. Plaćanje gotovinom ili karticom, a za veće radove moguće je plaćanje na rate.',
@@ -212,7 +221,8 @@ export const sr = {
 
   reviews: {
     title: 'Utisci pacijenata',
-    description: 'Utisci pacijenata Dental Studija Aurum u Beogradu.',
+    seoTitle: 'Utisci pacijenata | Dental Studio Aurum, Beograd',
+    description: 'Pročitajte utiske pacijenata Dental Studija Aurum u Beogradu o fasetama, implantima, beljenju i lečenju dece. Uverite se sami – zakažite pregled telefonom.',
     eyebrow: 'Utisci',
     intro: 'Najlepša preporuka je kada pacijent dovede porodicu. Evo šta neki od njih kažu.',
     disclaimer: 'Ovo je primer sajta – utisci su izmišljeni.',
@@ -228,7 +238,8 @@ export const sr = {
 
   faq: {
     title: 'Česta pitanja',
-    description: 'Odgovori na česta pitanja o lečenju zuba, cenama, zakazivanju i garanciji u Dental Studiju Aurum.',
+    seoTitle: 'Česta pitanja – stomatolog Beograd | Dental Studio Aurum',
+    description: 'Odgovori na česta pitanja o lečenju zuba: zakazivanje, hitni slučajevi, bol, plaćanje na rate i garancija. Dental Studio Aurum u Beogradu – pozovite nas.',
     eyebrow: 'Pitanja',
     intro: 'Ovde su odgovori na ono što nas pacijenti najčešće pitaju. Ako ne nađete svoj odgovor, pozovite nas.',
     mythsTitle: 'Mitovi i činjenice',
@@ -422,7 +433,8 @@ export const sr = {
 
   contact: {
     title: 'Kontakt',
-    description: 'Adresa, telefon i radno vreme Dental Studija Aurum u Beogradu. Pregled zakazujete telefonom.',
+    seoTitle: 'Kontakt i zakazivanje | Dental Studio Aurum, Beograd',
+    description: 'Dental Studio Aurum, Knez Mihailova 100, Beograd. Radimo radnim danima od 9 do 20h i subotom od 9 do 14h. Pregled zakazujete telefonom: +381 11 123 4567.',
     eyebrow: 'Kontakt',
     intro: 'Pregled zakazujete telefonom – tako odmah dogovaramo termin i odgovaramo na vaša pitanja.',
     callTitle: 'Pozovite nas',

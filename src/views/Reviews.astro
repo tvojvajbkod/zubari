@@ -15,11 +15,13 @@ const { lang, c } = Astro.props;
 const r = c.reviews;
 ---
 
-<Layout lang={lang} page="reviews" title={r.title} description={r.description}>
+<Layout lang={lang} page="reviews" title={r.seoTitle} description={r.description}>
   <PageIntro eyebrow={r.eyebrow} title={r.title} intro={r.intro}>
     <p class="disclaimer">{r.disclaimer}</p>
   </PageIntro>
 
+  <!-- Nevidljiv naslov sekcije, da struktura naslova bude potpuna (H1 → H2). -->
+  <h2 class="sr-only">{c.home.reviews.cta}</h2>
   <div class="container quotes">
     {
       r.items.map((item) => (

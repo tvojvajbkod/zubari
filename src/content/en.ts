@@ -4,9 +4,8 @@ import type { Content } from './index';
 
 export const en: Content = {
   home: {
-    title: 'Dental clinic in Belgrade',
-    description:
-      'Dental Studio Aurum – a modern dental clinic in central Belgrade. Pain-free treatment, whitening, veneers and implants. Book your appointment by phone.',
+    seoTitle: 'Dentist in Belgrade – Dental Studio Aurum | Pain-free care',
+    description: 'Dentist in central Belgrade for the whole family: check-ups, whitening, veneers and implants without pain and with prices upfront. Call to book your visit.',
     hero: {
       eyebrow: 'Dental clinic · Belgrade',
       title: 'A healthy smile, without fear or rush',
@@ -69,7 +68,8 @@ export const en: Content = {
 
   services: {
     title: 'Services',
-    description: 'Fillings, whitening, veneers, implants, dentures and children’s dentistry at Dental Studio Aurum in Belgrade.',
+    seoTitle: 'Services – Dentist in Belgrade | Dental Studio Aurum',
+    description: 'Check-ups, fillings, whitening, veneers, implants, dentures and children’s dentistry in central Belgrade. Treatment plan and price upfront. Call to book.',
     eyebrow: 'Services',
     intro: 'From a routine check-up to a whole new smile. Every treatment starts with an examination and a plan with the price, so you know what to expect.',
     pricesLink: 'See prices',
@@ -77,6 +77,7 @@ export const en: Content = {
       {
         id: 'preventiva',
         photo: 'usluga-preventiva',
+        photoAlt: 'Dentist using a jaw model to show a patient how to brush properly',
         name: 'Check-ups & prevention',
         short: 'Check-ups, scale & polish and care advice.',
         text: 'A check-up every six months is the cheapest way to keep your teeth. We remove tartar, polish your teeth and show you how to brush so they stay healthy.',
@@ -85,6 +86,7 @@ export const en: Content = {
       {
         id: 'popravke',
         photo: 'usluga-popravke',
+        photoAlt: 'Dentist examining a patient’s teeth in a dental chair',
         name: 'Fillings & treatment',
         short: 'Tooth-coloured fillings and root canal treatment.',
         text: 'We repair cavities with white fillings that look just like a natural tooth. When a tooth is more seriously damaged, we treat the root canal and save the tooth instead of extracting it.',
@@ -93,6 +95,7 @@ export const en: Content = {
       {
         id: 'beljenje',
         photo: 'usluga-beljenje',
+        photoAlt: 'Dentist comparing a patient’s tooth colour with a shade guide',
         name: 'Teeth whitening',
         short: 'A brighter smile in a single visit.',
         text: 'Safe in-clinic whitening takes about an hour and makes teeth several shades lighter. For gradual whitening at home, we make custom-fitted trays.',
@@ -101,6 +104,7 @@ export const en: Content = {
       {
         id: 'fasete',
         photo: 'usluga-fasete',
+        photoAlt: 'Checking tooth colour with a shade guide before making veneers',
         name: 'Veneers & crowns',
         short: 'A new smile – natural, not artificial.',
         text: 'Veneers are thin porcelain shells bonded to the front of the teeth. They correct colour, shape and small gaps. Before they are made, you can see what your new smile will look like.',
@@ -109,6 +113,7 @@ export const en: Content = {
       {
         id: 'implanti',
         photo: 'usluga-implanti',
+        photoAlt: 'Jaw model with a dental implant',
         name: 'Implants',
         short: 'A permanent replacement for a missing tooth.',
         text: 'An implant is a small titanium root that holds a new crown. It looks and works like a natural tooth, and the neighbouring teeth do not need to be filed down.',
@@ -117,6 +122,7 @@ export const en: Content = {
       {
         id: 'proteze',
         photo: 'usluga-proteze',
+        photoAlt: 'Making artificial teeth for a denture in a dental laboratory',
         name: 'Dentures',
         short: 'Comfortable dentures that stay in place.',
         text: 'We make removable and fixed dentures, as well as implant-retained dentures that do not move when you eat or speak.',
@@ -125,6 +131,7 @@ export const en: Content = {
       {
         id: 'deca',
         photo: 'usluga-deca',
+        photoAlt: 'Young girl at a dental check-up in the clinic',
         name: 'Children’s dentistry',
         short: 'Happy first visits to the dentist.',
         text: 'We give children time to get to know the clinic. We seal fissures, treat baby teeth and teach them how to brush – through play.',
@@ -135,7 +142,8 @@ export const en: Content = {
 
   team: {
     title: 'Our team',
-    description: 'Meet the dentists of Dental Studio Aurum in Belgrade.',
+    seoTitle: 'Our team – Dentists in Belgrade | Dental Studio Aurum',
+    description: 'Meet the dentists of Dental Studio Aurum in Belgrade: specialists in aesthetic dentistry, oral surgery and children’s dentistry. Call us to book a visit.',
     eyebrow: 'Our team',
     intro: 'Three dentists, each with their own speciality. When your treatment needs more expertise, we work together – and agree on everything with you.',
     members: [
@@ -166,7 +174,8 @@ export const en: Content = {
 
   prices: {
     title: 'Prices',
-    description: 'Price list of Dental Studio Aurum in Belgrade: check-ups, fillings, whitening, veneers, implants and dentures.',
+    seoTitle: 'Prices – Dentist in Belgrade | Dental Studio Aurum',
+    description: 'Dental prices in Belgrade: check-up RSD 3,000, whitening, veneers, implants and dentures. Written treatment plan and instalments available. Call us today.',
     eyebrow: 'Prices',
     intro: 'Prices are approximate. You get the exact price after your examination, in a written treatment plan – and it does not change during treatment.',
     note: 'Prices are in Serbian dinars (RSD) and include VAT. You can pay in cash or by card, and instalments are available for larger treatments.',
@@ -213,7 +222,8 @@ export const en: Content = {
 
   reviews: {
     title: 'Patient reviews',
-    description: 'Reviews from patients of Dental Studio Aurum in Belgrade.',
+    seoTitle: 'Patient reviews | Dental Studio Aurum, Belgrade',
+    description: 'Read what patients say about Dental Studio Aurum in Belgrade – veneers, implants, whitening and children’s dentistry. See for yourself and call us to book.',
     eyebrow: 'Reviews',
     intro: 'The best recommendation is when a patient brings their family. Here is what some of them say.',
     disclaimer: 'This is an example website – the reviews are fictional.',
@@ -229,7 +239,8 @@ export const en: Content = {
 
   faq: {
     title: 'Frequently asked questions',
-    description: 'Answers to frequently asked questions about dental treatment, prices, appointments and warranty at Dental Studio Aurum.',
+    seoTitle: 'FAQ – Dentist in Belgrade | Dental Studio Aurum',
+    description: 'Answers to common questions about dental treatment: booking, emergencies, pain, instalments and warranty. Dental Studio Aurum in Belgrade – give us a call.',
     eyebrow: 'FAQ',
     intro: 'Here are answers to the questions our patients ask most often. If you cannot find your answer, give us a call.',
     mythsTitle: 'Myths and facts',
@@ -423,7 +434,8 @@ export const en: Content = {
 
   contact: {
     title: 'Contact',
-    description: 'Address, phone and opening hours of Dental Studio Aurum in Belgrade. Appointments are booked by phone.',
+    seoTitle: 'Contact & booking | Dental Studio Aurum, Belgrade',
+    description: 'Dental Studio Aurum, 100 Knez Mihailova St, Belgrade. Open Mon–Fri 9 am–8 pm and Saturdays 9 am–2 pm. Book your appointment by phone: +381 11 123 4567.',
     eyebrow: 'Contact',
     intro: 'Appointments are booked by phone – that way we can agree on a time right away and answer your questions.',
     callTitle: 'Call us',

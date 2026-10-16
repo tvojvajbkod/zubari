@@ -15,7 +15,7 @@ const { lang, c } = Astro.props;
 const p = c.prices;
 ---
 
-<Layout lang={lang} page="prices" title={p.title} description={p.description}>
+<Layout lang={lang} page="prices" title={p.seoTitle} description={p.description}>
   <PageIntro eyebrow={p.eyebrow} title={p.title} intro={p.intro} />
 
   <div class="container prices">

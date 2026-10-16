@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 5, 16.10.2026), koraci 1–7 završeni (sajt i chatbot na srpskom i engleskom); sledi korak 8 (provera i Google pretraga)
+Status: **odobren** (verzija 6, 16.10.2026), koraci 1–8 završeni; urađena SEO osnova
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio
@@ -62,4 +62,11 @@ Tačne nijanse su odobrene u koraku 3.
 6. Dodajem engleske verzije
 7. Pravim chatbot
 8. Proveravam sajt na telefonu i računaru i prijavljujem ga Google pretrazi
+   - *Odstupanje (verzija 6):* sajt je označen kao TEST (noindex), jer je ordinacija izmišljena, pa se **ne prijavljuje** Google-u. Za pravu ordinaciju: u src/seo.ts promeniti SITE_IS_TEST na false.
 9. Objavljujem sajt i šaljem vam link
+
+## SEO osnova (verzija 6)
+- Glavna ključna reč: **stomatolog Beograd**, oblast: Beograd
+- Sajt je TEST: sve stranice imaju „noindex, nofollow“
+- Podaci za Google (JSON-LD): Dentist sa adresom, radnim vremenom i cenama + osnivač (Person) + česta pitanja (FAQPage); bez ocena i recenzija
+- robots.txt i sitemap.xml se prave zajedno sa sajtom (folder dist/)

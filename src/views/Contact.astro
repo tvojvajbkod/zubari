@@ -16,7 +16,7 @@ const text = t[lang];
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent('Knez Mihailova, Beograd')}&z=16&output=embed&hl=${lang === 'sr' ? 'sr-Latn' : 'en'}`;
 ---
 
-<Layout lang={lang} page="contact" title={k.title} description={k.description}>
+<Layout lang={lang} page="contact" title={k.seoTitle} description={k.description}>
   <PageIntro eyebrow={k.eyebrow} title={k.title} intro={k.intro} />
 
   <div class="container contact">

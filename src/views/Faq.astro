@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import CallBand from '../components/CallBand.astro';
 import { type Lang } from '../i18n';
+import { faqJsonLd } from '../seo';
 import type { Content } from '../content';
 
 interface Props {
@@ -15,7 +16,8 @@ const { lang, c } = Astro.props;
 const f = c.faq;
 ---
 
-<Layout lang={lang} page="faq" title={f.title} description={f.description}>
+<Layout lang={lang} page="faq" title={f.seoTitle} description={f.description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd(lang))} />
   <PageIntro eyebrow={f.eyebrow} title={f.title} intro={f.intro} />
 
   <section class="container block">

@@ -17,14 +17,14 @@ const { lang, c } = Astro.props;
 const tm = c.team;
 ---
 
-<Layout lang={lang} page="team" title={tm.title} description={tm.description}>
+<Layout lang={lang} page="team" title={tm.seoTitle} description={tm.description}>
   <PageIntro eyebrow={tm.eyebrow} title={tm.title} intro={tm.intro} />
 
   <div class="container team">
     {
       tm.members.map((m) => (
         <article>
-          <Image src={photos[m.photo]} alt={m.name} widths={[400, 700]} sizes="(max-width: 800px) 100vw, 33vw" />
+          <Image src={photos[m.photo]} alt={`${m.name} – ${m.role}`} widths={[400, 700]} sizes="(max-width: 800px) 100vw, 33vw" />
           <h2>{m.name}</h2>
           <p class="role">{m.role}</p>
           <p>{m.bio}</p>

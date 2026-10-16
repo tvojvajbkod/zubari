@@ -1,6 +1,6 @@
 ---
 // Početna stranica.
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import CallBand from '../components/CallBand.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
@@ -17,14 +17,20 @@ const { lang, c } = Astro.props;
 const h = c.home;
 const featured = c.services.items.slice(0, 6);
 const reviews = c.reviews.items.slice(0, 3);
+// Glavna slika: iste veličine kao u <Image> ispod, da bi pregledač mogao da je učita unapred.
+const heroWidths = [600, 900, 1200, 1600];
+const heroSizes = '(max-width: 900px) 100vw, 50vw';
+const heroImg = await getImage({ src: photos.hero, widths: heroWidths, sizes: heroSizes });
 ---
 
-<Layout lang={lang} page="home" title={h.title} description={h.description}>
+<Layout lang={lang} page="home" title={h.seoTitle} description={h.description} preload={{ srcset: heroImg.srcSet.attribute, sizes: heroSizes }}>
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__text">
-        <p class="eyebrow">{h.hero.eyebrow}</p>
-        <h1>{h.hero.title}</h1>
+        <h1>
+          <span class="eyebrow hero__eyebrow">{h.hero.eyebrow}</span>
+          {h.hero.title}
+        </h1>
         <p class="hero__lead">{h.hero.text}</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href={clinic.phoneHref}>{t[lang].call}: {clinic.phone}</a>
@@ -32,7 +38,7 @@ const reviews = c.reviews.items.slice(0, 3);
         </div>
       </div>
       <div class="hero__photo">
-        <Image src={photos.hero} alt={h.hero.photoAlt} widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" />
+        <Image src={photos.hero} alt={h.hero.photoAlt} widths={heroWidths} sizes={heroSizes} loading="eager" fetchpriority="high" />
       </div>
     </div>
     <div class="container">
@@ -83,7 +89,7 @@ const reviews = c.reviews.items.slice(0, 3);
           featured.map((s) => (
             <li>
               <a href={`${url('services', lang)}#${s.id}`}>
-                <Image src={photos[s.photo]} alt="" widths={[400, 700]} sizes="(max-width: 700px) 100vw, 33vw" />
+                <Image src={photos[s.photo]} alt={s.photoAlt} widths={[400, 700]} sizes="(max-width: 700px) 100vw, 33vw" />
                 <span class="services__name">{s.name}</span>
                 <span class="services__short">{s.short}</span>
               </a>
@@ -167,8 +173,15 @@ const reviews = c.reviews.items.slice(0, 3);
     align-items: center;
     gap: clamp(2rem, 5vw, 4rem);
   }
+  /* Natpis iznad naslova je deo H1 (zbog ključne reči), ali izgleda kao ranije. */
+  .hero__eyebrow {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-family: var(--font-body);
+    line-height: 1.65;
+  }
   .hero h1 {
-    margin: 0.5rem 0 1.25rem;
+    margin: 0.8rem 0 1.25rem;
     font-size: clamp(2.6rem, 6vw, 4.4rem);
   }
   .hero__lead {
