@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 3, 16.10.2026), koraci 1–2 završeni, sledi korak 3 (izgled)
+Status: **odobren** (verzija 3, 16.10.2026), koraci 1–3 završeni (izgled odobren), u toku je korak 4
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio

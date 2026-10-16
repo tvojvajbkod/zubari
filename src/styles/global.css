@@ -10,6 +10,7 @@
   --primary-deep: #123f63;
   --accent: #2bb3a3; /* tirkizna/mint: svežina i zdravlje */
   --accent-soft: #e3f6f3;
+  --accent-ink: #137a6f; /* tamnija tirkizna, za sitan tekst (dobro čitljiva na beloj) */
   --gold: #b8955a; /* zlatna, samo u sitnim detaljima */
   --gold-light: #e2c99a;
 
@@ -90,7 +91,7 @@ img {
 }
 
 .eyebrow {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.12em;
