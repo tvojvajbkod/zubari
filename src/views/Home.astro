@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import CallBand from '../components/CallBand.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import RouteList from '../components/RouteList.astro';
+import TeamSlider from '../components/TeamSlider.astro';
 import { clinic, t, url, type Lang } from '../i18n';
 import { mapSrc } from '../location';
 import { photos } from '../photos';
@@ -138,6 +139,8 @@ const heroImg = await getImage({ src: photos.hero, widths: heroWidths, sizes: he
     </div>
     </div>
   </section>
+
+  <TeamSlider lang={lang} c={c} />
 
   <section class="container section">
     <div class="section-head">

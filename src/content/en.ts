@@ -55,6 +55,15 @@ export const en: Content = {
       cta: 'Meet the team',
       photoAlt: 'Dentist using a dental model to explain a treatment plan to a patient',
     },
+    team: {
+      // Two-colour heading, as in the reference: "Our" white, "team" blue.
+      titleStart: 'Our',
+      titleEnd: 'team',
+      prev: 'Previous dentist',
+      next: 'Next dentist',
+      call: 'Call the clinic',
+      cta: 'More about our team',
+    },
     reviews: {
       eyebrow: 'Reviews',
       title: 'What our patients say',

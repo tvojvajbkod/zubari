@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 8, 17.10.2026), koraci 1–8 završeni; promenjeni fontovi (predlog C)
+Status: **odobren** (verzija 9, 17.10.2026), koraci 1–8 završeni, uz dopunu „Naš tim“ na Početnoj
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio
@@ -28,6 +28,7 @@ Tačne nijanse su odobrene u koraku 3.
 
 ## Stranice (svaka na srpskom i na engleskom)
 1. **Početna**: velika fotografija, kratka poruka, dugme „Pozovite nas“, izdvojene usluge i nekoliko utisaka pacijenata
+   - *Dopuna (verzija 9):* sekcija **„Naš tim“** po uzoru na petrovicdent.com: tamnoplava traka, naslov u dve boje, kvadratne fotografije sa strelicama (pojavljuju se kad sve ne stane), plava traka sa telefonom pri prelasku mišem. *Odstupanje od uzora:* ispod imena su zvanje i oblasti rada umesto ličnih telefona, jer se zakazuje samo preko broja ordinacije.
 2. **Usluge**: popravke, beljenje, fasete, implanti, proteze, dečja stomatologija
 3. **Naš tim**: izmišljeni doktori sa fotografijom i kratkom biografijom
 4. **Cenovnik**: tabela usluga i cena

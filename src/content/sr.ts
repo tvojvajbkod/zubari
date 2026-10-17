@@ -54,6 +54,15 @@ export const sr = {
       cta: 'Upoznajte tim',
       photoAlt: 'Stomatolog na modelu zuba objašnjava pacijentkinji plan lečenja',
     },
+    team: {
+      // Naslov u dve boje, kao na uzoru: "Naš" belo, "tim" plavo.
+      titleStart: 'Naš',
+      titleEnd: 'tim',
+      prev: 'Prethodni doktor',
+      next: 'Sledeći doktor',
+      call: 'Pozovite ordinaciju',
+      cta: 'Više o našem timu',
+    },
     reviews: {
       eyebrow: 'Utisci',
       title: 'Šta kažu naši pacijenti',
