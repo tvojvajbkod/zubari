@@ -1,6 +1,6 @@
 # Plan: sajt stomatološke ordinacije (primer za portfolio)
 
-Status: **odobren** (verzija 7, 16.10.2026), koraci 1–8 završeni, uz dopunu „Kako stići gradskim prevozom“
+Status: **odobren** (verzija 8, 17.10.2026), koraci 1–8 završeni; promenjeni fontovi (predlog C)
 
 ## Osnovno
 - Izmišljena ordinacija, sajt služi kao primer za portfolio
@@ -22,9 +22,9 @@ Umesto crne podloge sa uzora: **bela podloga + boje koje ljudi povezuju sa zdrav
 Tačne nijanse su odobrene u koraku 3.
 
 ## Slova
-- Naslovi: **Playfair Display** (elegantan, sa „serifima“)
-- Tekst: **Inter** (jednostavan i čitak)
-- *Odstupanje od koraka 3:* prvobitni font (Cormorant) je loše prikazivao š, ž i č, pa je zamenjen
+- Naslovi: **Lora** (mirna, klasična slova sa „serifima“)
+- Tekst: **Source Sans 3** (jasan i čitak), osnovna veličina 18px
+- *Istorija:* Cormorant (loše prikazivao š, ž, č) → Playfair Display + Inter → Lora + Source Sans 3 (verzija 8, izbor sa stranice za poređenje fontova)
 
 ## Stranice (svaka na srpskom i na engleskom)
 1. **Početna**: velika fotografija, kratka poruka, dugme „Pozovite nas“, izdvojene usluge i nekoliko utisaka pacijenata
